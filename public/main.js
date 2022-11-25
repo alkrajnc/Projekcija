@@ -4,7 +4,6 @@ const selectCommand = document.getElementsByClassName('checkBoxSettings');
 const fileTable = document.getElementsByClassName("fileTable")[0];
 const deleteFileIcons = document.getElementsByClassName("trash");
 const serverStatus = document.getElementsByClassName("fa-circle")[0];
-const activeFile = document.getElementById("activeFile");
 const fileName = document.getElementsByClassName("index");
 
 let fileList = {};
@@ -39,16 +38,6 @@ async function getResponse() {
   }
   const data = await response.json();
   fileList = data;
-  for (let i = 0; i < Object.keys(fileList.rows).length; i++) {
-    if (fileList.rows[i].isActive === 1) {
-      activeElement = i;
-      activeFile.innerHTML = fileList.rows[activeElement].file_name;
-      break;
-    } else {
-      activeFile.innerHTML = '';
-    }
-    
-  }
   
   populateFileTable(data);
 }
@@ -77,6 +66,7 @@ function populateFileTable (data) {
   });
 }
 async function deleteFileFromServer (index) {
+  
   const response = await fetch(
     `http://localhost:3000/service/${index}`,
     {
@@ -93,9 +83,8 @@ async function deleteFileFromServer (index) {
   );
   if (!response.ok) {
     throw new Error(`Error deleting`);
-  } else {
-    console.log("Okey");
   }
+  location.href=location.href;
 }
 
 

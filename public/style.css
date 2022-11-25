@@ -118,3 +118,7 @@ i{
     display: flex;
     flex-direction: column;
 }
+.index{
+    width: 100px;
+    word-break:keep-all;
+}

@@ -28,8 +28,6 @@
                 <h1 class="text-4xl">Status:</h1>
                 <div class="m-2 flex flex-col">
                     <h2>Server: <i class="fa-solid fa-circle"></i></h2>
-                        <h2>Currently playing: <i id="activeFile"></i></h2>
-                        <img src="http://localhost:3000/thumbnails/img1.png" class="aspect-1 w-1/4 mx-auto" alt="">
                 </div>
             </div>
             <div class="right-column">
@@ -37,14 +35,12 @@
                 <form action="http://localhost:3000/service/upload" method="post" enctype="multipart/form-data">
                     <div class="flex flex-col justify-center">
                             <input type="file" name="test" id="">
-                            <input type="submit" value="Submit" onclick=" setTimeout(function(){
-                                location.reload;
-                              },500)">
+                            <input type="submit" value="Submit" onclick="location.href=location.href;">
                     </div>
                 </form>
                 <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
             </div>
-            <div class="bottom col-span-2">
+            <div class="bottom col-span-2 overflow-auto">
                     <div class="headers flex flex-row justify-between mx-6 my-2 pb-2 border-b-2 border-gray-600">
                         <h3>File name</h3>
                         <h3>File location</h3>

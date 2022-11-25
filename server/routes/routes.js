@@ -18,7 +18,7 @@ const uploadFile = multer({storage:storage})
 
 router.get('/', async function(req, res, next) {
   try {
-    console.log("Querying file list");
+    // console.log("Querying file list");
     res.json(await files.getList(req.query.page));
   } catch (err) {
     console.error(`Error while getting file list `, err.message);
@@ -29,6 +29,10 @@ router.get('/', async function(req, res, next) {
 router.delete('/:file_name', async function(req, res, next) {
   try {
     res.json(await files.remove(req.params.file_name));
+    fs.appendFile('log.log', `\nFile deleted(${req.file.filename}).`, function (err) {
+      if (err) throw err;
+      console.log('Updated!');
+    }); 
   } catch (err) {
     console.error(`Error while deleting file from server`, err.message);
     next(err);
@@ -37,12 +41,19 @@ router.delete('/:file_name', async function(req, res, next) {
 
 
 
-
-
 /* POST files */
 router.post('/upload', uploadFile.single('test'), function(req, file) {
-  console.log(req.file, req.body);
-  upload(req);
+  try {
+    fs.appendFile('log.log', `\n ${Date.now().getMonth} File added(${req.file.filename}).`, function (err) {
+      if (err) throw err;
+      console.log('Updated!');
+    }); 
+    upload(req);
+  } catch (error) {
+    console.log()
+  }
+  
+ 
 });
 
 /* Projekcija */
@@ -53,7 +64,9 @@ router.post('/media', function(req, res, next) {
 /* Odstranitev Projekcije */
 router.post('/media/remove', function(req, res, next) {
   files.removeMedia(req.body);
+
 });
+
 
 
 function queryFileList () {

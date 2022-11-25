@@ -12,9 +12,19 @@ function playMedia (req){
   )
 }
 function removeMedia(req){
-  db.query(
+  if (req.filename !== undefined) {
+    db.query(
     `update files set isActiveTv${req.tv_id} = 0 where file_name = "${req.filename}"`
   )
+  } else {
+    for (let index = 0; index < 2; index++) {
+      db.query(
+      `update files set isActiveTv${index} = 0`
+      )
+    }
+    
+  }
+  
 }
 
 
@@ -41,19 +51,13 @@ async function remove(file_name){
     const result = await db.query(
       `DELETE FROM files WHERE file_name="${file_name}"`
     );
-    
+    db.query(
+      `ALTER TABLE files AUTO_INCREMENT = 1
+      `
+    )
   } catch (error) {
     console.log("Error");
   }
-  
-
-  
-
-  
-
-  
-
-  return {message};
 }
 module.exports = {
   getList,

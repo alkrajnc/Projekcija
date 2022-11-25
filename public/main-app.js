@@ -8,20 +8,19 @@ const fileListDiv = document.getElementsByClassName("fileList");
 const tvIconTv0 = document.getElementsByClassName("useFileTv0");
 const tvIconTv1 = document.getElementsByClassName("useFileTv1");
 const removeActiveMediaButton = document.getElementsByClassName("removeActiveMediaButton");
+const removeAllMediaButton = document.getElementsByClassName("removeMediaButton")[0];
 
 let fileList = {};
 let activeElement;
 
-function reloadPage () {
- 
- 
-}
-
 document.body.onload = () => {
   getResponse();
+  
 }
-
-
+removeAllMediaButton.onclick = () => {
+  removeActiveMediaAll();
+  console.log("e");
+}
 
 async function getResponse() {
   const response = await fetch(
@@ -45,28 +44,23 @@ async function getResponse() {
   fileList = data;
   for (let i = 0; i < Object.keys(fileList.rows).length; i++) {
     if (fileList.rows[i].isActiveTv0 === 1) {
-      activeElement = i;
-      activeFile[0].innerHTML = fileList.rows[activeElement].file_name;
-    }  
-    if (fileList.rows[i].isActiveTv1 === 1) {
-      activeElement = i;
-      activeFile[1].innerHTML = fileList.rows[activeElement].file_name;
-    }  
-    if (fileList.rows[i].isActiveTv0 !== 1 )
-    {
+      activeFile[0].innerHTML = fileList.rows[i].file_name;
+      removeActiveMediaButton[0].style.display = 'inline'
+    }  else {
       activeFile[0].innerHTML = '';
-      
       removeActiveMediaButton[0].style.display = 'none';
-      
     }
-    if (fileList.rows[i].isActiveTv1 !== 1) {
+    if (fileList.rows[i].isActiveTv1 === 1) {
+      activeFile[1].innerHTML = fileList.rows[i].file_name;
+      removeActiveMediaButton[1].style.display = 'inline'
+    }  else {
       activeFile[1].innerHTML = '';
       removeActiveMediaButton[1].style.display = 'none';
     }
     
   }
   populateFileList(data);
-  populateFileTable(data);
+
 }
 function populateFileList (data) {
     for (let index = 0; index < Object.keys(data.rows).length; index++) {
@@ -80,7 +74,6 @@ function populateFileList (data) {
           <div class="useFileTv0"><i class="fa-solid fa-tv"></i></div>
           <h4 class="index">${data.rows[index].file_name}</h4>
           <h4>${data.rows[index].file_type}</h4>
-          <div class="trash"><i class="fa-solid fa-trash"></i></div>
         </div>`;
         parentDiv2.innerHTML = `
         
@@ -88,11 +81,24 @@ function populateFileList (data) {
           <div class="useFileTv1"><i class="fa-solid fa-tv"></i></i></div>
           <h4 class="index">${data.rows[index].file_name}</h4>
           <h4>${data.rows[index].file_type}</h4>
-          <div class="trash"><i class="fa-solid fa-trash"></i></div>
         </div>`;
       fileListDiv[0].appendChild(parentDiv);
       fileListDiv[1].appendChild(parentDiv2);
     }
+    Array.from(removeActiveMediaButton).forEach((item, index) => {
+      item.onclick = () => {
+        console.log(fileName[index].innerHTML)
+        removeActiveMedia(index);
+      };
+      item.onmouseover = () => {
+        item.style.color = '#ff0000bb';
+        item.style.transform = 'scale(1.1)';
+      }
+      item.onmouseout = () => {
+        item.style.color = 'gray';
+        item.style.transform = 'scale(1)';
+      }
+    });
     Array.from(deleteFileIcons).forEach((item, index) => {
       item.onclick = () => {
         console.log(fileName[index].innerHTML)
@@ -127,20 +133,6 @@ function populateFileList (data) {
         item.style.transform = 'scale(1)';
       }
     });
-    Array.from(removeActiveMediaButton).forEach((item, index) => {
-      item.onclick = () => {
-        console.log(fileName[index].innerHTML)
-        removeActiveMedia(index);
-      };
-      item.onmouseover = () => {
-        item.style.color = '#ff0000bb';
-        item.style.transform = 'scale(1.1)';
-      }
-      item.onmouseout = () => {
-        item.style.color = 'gray';
-        item.style.transform = 'scale(1)';
-      }
-    });
   }
 async function removeActiveMedia (index) {
   let filename = fileName[index].innerHTML;
@@ -167,6 +159,28 @@ async function removeActiveMedia (index) {
     console.log("removed");
   }
 }
+async function removeActiveMediaAll (index) {
+  location.href=location.href;
+  const response = await fetch(
+    `http://localhost:3000/service/media/remove`,
+    {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Methods': "*",
+        'Access-Control-Allow-Origin': "*",
+        'Access-Control-Allow-Headers': "*"
+      },
+      body: `{
+        "num_of_files": ${Object.keys(fileList).length},
+        "all": "true"
+      }`
+    }
+  );
+  
+}
+
 
 async function useMedia (index, tvId) {
   console.log(index);
@@ -194,30 +208,6 @@ async function useMedia (index, tvId) {
     
   }
 }
-
-function populateFileTable (data) {
-  for (let index = 0; index < Object.keys(data.rows).length; index++) {
-      const parentDiv = document.createElement("div"); 
-      parentDiv.classList.add("file");
-      parentDiv.innerHTML = `
-      <i class="fa-solid fa-photo-film"></i>
-      <div class="fileInfoDiv flex flex-row justify-between">
-        <h4 class="index">${data.rows[index].file_name}</h4>
-        <h4>${data.rows[index].file_location}</h4>
-        <h4>${data.rows[index].file_type}</h4>
-        <h4>${data.rows[index].upload_time}</h4>
-        <div class="trash"><i class="fa-solid fa-trash"></i></div>
-      </div>`;
-    fileTable.appendChild(parentDiv);
-    
-  }
-  Array.from(deleteFileIcons).forEach((item, index) => {
-    item.onclick = () => {
-      console.log(fileName[index].innerHTML)
-      deleteFileFromServer(fileName[index].innerHTML);
-    };
-  });
-}
 async function deleteFileFromServer (index) {
   const response = await fetch(
     `http://localhost:3000/service/${index}`,
@@ -238,7 +228,7 @@ async function deleteFileFromServer (index) {
   } else {
     console.log("Okey");
   }
-  document.location.reload;
+ 
 }
 
 
