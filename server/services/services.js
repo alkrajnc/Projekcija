@@ -6,25 +6,22 @@ var fs = require('fs');
 const folder = './public/videos/';
 
 
-function playMedia (){
-  exec("ls", (error, stdout, stderr) => {
-    if (error) {
-        console.log(`error: ${error.message}`);
-        return;
-    }
-    if (stderr) {
-        console.log(`stderr: ${stderr}`);
-        return;
-    }
-    console.log(`stdout: ${stdout}`);
-});
+function playMedia (req){
+  db.query(
+    `update files set isActiveTv${req.tv_id} = 1 where file_name = "${req.filename}"`
+  )
+}
+function removeMedia(req){
+  db.query(
+    `update files set isActiveTv${req.tv_id} = 0 where file_name = "${req.filename}"`
+  )
 }
 
 
 
 async function getList(){
     const rows = await db.query(
-    `SELECT file_name, file_location, file_type, upload_time, isActive FROM files`
+    `SELECT file_name, file_location, file_type, upload_time, isActiveTv0, isActiveTv1 FROM files`
   );
 
   return {
@@ -36,20 +33,23 @@ async function getList(){
 
 
 async function remove(file_name){
-  
-  fs.unlink(`./public/videos/${file_name}`, function (err) {
-    if (err) throw err;
-    console.log(`File (${file_name}) deleted!`);
-  }); 
-  const result = await db.query(
-    `DELETE FROM files WHERE file_name="${file_name}"`
-  );
-
-  let message = 'Error in deleting programming language';
-
-  if (result.ok) {
-    message = 'Success';
+  try {
+      fs.unlink(`./public/videos/${file_name}`, function (err) {
+      if (err) throw err;
+      console.log(`File (${file_name}) deleted!`);
+    }); 
+    const result = await db.query(
+      `DELETE FROM files WHERE file_name="${file_name}"`
+    );
+    
+  } catch (error) {
+    console.log("Error");
   }
+  
+
+  
+
+  
 
   
 
@@ -58,5 +58,6 @@ async function remove(file_name){
 module.exports = {
   getList,
   remove,
-  playMedia
+  playMedia,
+  removeMedia
 }

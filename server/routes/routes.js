@@ -42,16 +42,18 @@ router.delete('/:file_name', async function(req, res, next) {
 /* POST files */
 router.post('/upload', uploadFile.single('test'), function(req, file) {
   console.log(req.file, req.body);
-  queryFileList();
   upload(req);
 });
 
-/* POST files */
-router.post('/media', function(req, file) {
-  console.log(req.body)
-  
+/* Projekcija */
+router.post('/media', function(req, res, next) {
+  console.log(req.body);
+  files.playMedia(req.body);
 });
-
+/* Odstranitev Projekcije */
+router.post('/media/remove', function(req, res, next) {
+  files.removeMedia(req.body);
+});
 
 
 function queryFileList () {

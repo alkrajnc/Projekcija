@@ -1,6 +1,6 @@
 // const button = document.getElementById("sendButton");
 const selectCommand = document.getElementsByClassName('checkBoxSettings');
-const file = document.getElementById("fileUpload").files[0];
+// const file = document.getElementById("fileUpload").files[0];
 const fileTable = document.getElementsByClassName("fileTable")[0];
 const deleteFileIcons = document.getElementsByClassName("trash");
 const serverStatus = document.getElementsByClassName("fa-circle")[0];

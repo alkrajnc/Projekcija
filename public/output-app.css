@@ -548,8 +548,22 @@ video {
   margin-bottom: 0.5rem;
 }
 
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
 .flex {
   display: flex;
+}
+
+.grid {
+  display: grid;
 }
 
 .w-1\/4 {
@@ -570,6 +584,10 @@ video {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.overflow-auto {
+  overflow: auto;
 }
 
 .border-b-2 {
@@ -642,7 +660,6 @@ h1{
 .tel1{
   display:grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
 }
 
 .tel2{
@@ -739,6 +756,9 @@ i{
   transform: scale(1.1);
 }
 
+.useFile{
+}
+
 .popup {
   display: none;
   position: absolute;
@@ -753,3 +773,11 @@ i{
   flex-direction: column;
 }
 
+.useFile {
+  transition: all 200ms ease;
+  color: rgba(255, 255, 255, 0.526);
+}
+
+.removeActiveMediaButtons{
+  transition: 200ms all ease;
+}
