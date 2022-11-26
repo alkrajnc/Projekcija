@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tv0</title>
+</head>
+<body>
+    <video autoplay muted loop width="1920" height="1080">
+        <source id="video" src="http://localhost:3000/display/tv0.mp4" type="video/mp4">
+    </video>
+
+    <script>
+        const slide = document.getElementById('video');
+        document.body.onload = () => {
+            slide.play();
+        }
+    </script>
+</body>
+</html>

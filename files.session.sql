@@ -23,4 +23,5 @@ WHERE file_name = 'undefined';
 ALTER TABLE files ADD COLUMN isActiveTv1 boolean AFTER isActiveTv0;
 ALTER TABLE files COLUMN `isActive` TO `isActiveTv1`
 ALTER TABLE files DROP COLUMN isActive
+
 select * from files;

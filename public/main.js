@@ -5,17 +5,42 @@ const fileTable = document.getElementsByClassName("fileTable")[0];
 const deleteFileIcons = document.getElementsByClassName("trash");
 const serverStatus = document.getElementsByClassName("fa-circle")[0];
 const fileName = document.getElementsByClassName("index");
+const sendFiles = document.getElementsByClassName('submit-files')[0];
+
 
 let fileList = {};
 let activeElement;
 
 
-
-document.body.onload = () => {
-  getResponse();
+sendFiles.onclick = (event) => {
+  uploadFile(event);
 }
 
-async function getResponse() {
+document.body.onload = () => {
+  fetchFiles();
+}
+
+function uploadFile(event) {
+  console.log("Elo");
+  event.preventDefault();
+  const files = document.getElementById("files");
+  const formData = new FormData();
+  formData.append("files", files.files[0]);
+  fetch("http://localhost:3000/service/upload", {
+      method: 'POST',
+      headers: {
+      },
+      mode: 'cors',
+      body: formData,
+  });
+  setTimeout(function(){
+    location.href=location.href;
+  }, 1000);
+  
+}
+
+
+async function fetchFiles() {
   const response = await fetch(
     'http://localhost:3000/service',
     {
@@ -30,15 +55,9 @@ async function getResponse() {
       }
     }
   );
-  if (!response.ok) {
-		serverStatus.style.color = "red";
-    throw new Error(`Error fetching data`);
-  } else {
-    serverStatus.style.color = "green";
-  }
   const data = await response.json();
   fileList = data;
-  
+  serverStatus.style.color = 'green';
   populateFileTable(data);
 }
 
@@ -56,7 +75,6 @@ function populateFileTable (data) {
         <div class="trash"><i class="fa-solid fa-trash"></i></div>
       </div>`;
     fileTable.appendChild(parentDiv);
-    
   }
   Array.from(deleteFileIcons).forEach((item, index) => {
     item.onclick = () => {

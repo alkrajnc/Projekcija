@@ -140,3 +140,6 @@ i{
 .removeActiveMediaButtons{
     transition: 200ms all ease;
 }
+.activeFile{
+    word-break: break-all;
+}

@@ -32,13 +32,13 @@
             </div>
             <div class="right-column">
                 <h1>Upload files</h1>
-                <form action="http://localhost:3000/service/upload" method="post" enctype="multipart/form-data">
                     <div class="flex flex-col justify-center">
-                            <input type="file" name="test" id="">
-                            <input type="submit" value="Submit" onclick="location.href=location.href;">
+                            <div class="input-group">
+                                <input type="file" name="files" id="files">
+                            </div>
+                            <button class="submit-files text-white bg-teal-600 text-xl transition-all hover:rounded-3xl rounded-xl p-2 m-2 w-1/3 mx-auto" onclick="uploadFile">Submit file</button>
                     </div>
-                </form>
-                <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+                <!--<iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>-->
             </div>
             <div class="bottom col-span-2 overflow-auto">
                     <div class="headers flex flex-row justify-between mx-6 my-2 pb-2 border-b-2 border-gray-600">

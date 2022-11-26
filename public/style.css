@@ -119,6 +119,7 @@ i{
     flex-direction: column;
 }
 .index{
-    width: 100px;
+    width: 120px;
+    text-align: left;
     word-break:keep-all;
 }

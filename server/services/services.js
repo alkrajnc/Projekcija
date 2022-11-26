@@ -2,66 +2,133 @@ const db = require('./db');
 const helper = require('../helper');
 const config = require('../config');
 const { exec } = require("child_process");
-var fs = require('fs'); 
+var fs = require('fs');
 const folder = './public/videos/';
 
 
-function playMedia (req){
-  db.query(
-    `update files set isActiveTv${req.tv_id} = 1 where file_name = "${req.filename}"`
-  )
+var today = new Date();
+var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+var dateTime = date + ' ' + time;
+
+function playMedia(req) {
+	try {
+		fs.appendFile('log.log', `\n ${dateTime} Set active media(${req.filename}).`, function(err) {
+			if (err) throw err;
+			console.log('Log added');
+		});
+		fs.copyFile(`./public/videos/${req.filename}`, `./public/display/tv${req.tv_id}.mp4`, (err) => {
+			if (err) throw err;	
+			console.log(`Copied ${req.filename} to tv${req.tv_id}`);
+		  });
+		db.query(
+			`update files set isActiveTv${req.tv_id} = 1 where file_name = "${req.filename}"`
+		)
+	} catch (error) {
+		fs.appendFile('../log.log', `\n ${dateTime} ERROR in plating media(${error}).`, function(err) {
+			if (err) throw err;
+			console.log('Log added');
+		});
+	}
+
 }
-function removeMedia(req){
-  if (req.filename !== undefined) {
-    db.query(
-    `update files set isActiveTv${req.tv_id} = 0 where file_name = "${req.filename}"`
-  )
-  } else {
-    for (let index = 0; index < 2; index++) {
-      db.query(
-      `update files set isActiveTv${index} = 0`
+
+function removeMedia() {
+	try {
+		db.query(
+        `update files set isActiveTv0 = 0;`
       )
-    }
-    
-  }
-  
+      db.query(
+        `update files set isActiveTv1 = 0;`
+      )
+	for (let index = 0; index < 2; index++) {
+		fs.unlink(`./public/display/tv${index}.mp4`, function(err) {
+		if (err) {
+			fs.appendFile('../log.log', `\n ${dateTime} ERROR in removing file(${err}).`, function(err) {
+				if (err) throw err;
+				console.log('Log added');
+			});
+		} 
+		console.log(`Active media removed from /display`);
+		});
+	}
+	  
+	
+	  fs.appendFile('log.log', `\n ${dateTime} Removed active media.`, function(err) {
+		if (err) throw err;
+		console.log('Log added');
+	});
+	} catch (error) {
+		fs.appendFile('log.log', `\n ${dateTime} ERROR in removing active media(${error}).`, function(err) {
+			if (err) throw err;
+			console.log('Log added');
+		});
+	}
 }
 
+async function getList() {
+	try {
+		const rows = await db.query(
+			`SELECT file_name, file_location, file_type, upload_time, isActiveTv0, isActiveTv1 FROM files`
+		);
+		return {
+			rows
+		}
+	} catch (error) {
+		fs.appendFile('../log.log', `\n ${dateTime} ERROR in quyering database(${error}).`, function(err) {
+			if (err) throw err;
+			console.log('Log added');
+		});
+	}
 
-
-async function getList(){
-    const rows = await db.query(
-    `SELECT file_name, file_location, file_type, upload_time, isActiveTv0, isActiveTv1 FROM files`
-  );
-
-  return {
-    rows
-
-  }
 }
 
+async function upload (req) {
+  	try {
+		db.query(
+			`INSERT INTO files 
+			(file_name, file_location, file_type, upload_time) 
+			VALUES 
+			("${req.originalname}", "${req.destination}", "${req.mimetype}", CURRENT_TIMESTAMP())`
+    	);
+		fs.appendFile('../log.log', `\n ${dateTime} Uploaded file(${req.originalname}).`, function(err) {
+			if (err) throw err;
+			console.log('Log added');
+		});
+		let message = "Uploaded new file.";
+		return message;
+	
+	} catch (error) {
+		console.log("Error: " + error)
+	}
+	
+}
 
-
-async function remove(file_name){
-  try {
-      fs.unlink(`./public/videos/${file_name}`, function (err) {
-      if (err) throw err;
-      console.log(`File (${file_name}) deleted!`);
-    }); 
-    const result = await db.query(
-      `DELETE FROM files WHERE file_name="${file_name}"`
-    );
-    db.query(
-      `ALTER TABLE files AUTO_INCREMENT = 1
-      `
-    )
-  } catch (error) {
-    console.log("Error");
-  }
+async function remove(file_name) {
+	try {
+		fs.unlink(`./public/videos/${file_name}`, function(err) {
+			if (err) {
+				fs.appendFile('../log.log', `\n ${dateTime} ERROR in removing file(${err}).`, function(err) {
+					if (err) throw err;
+					console.log('Log added');
+				});
+			} 
+			console.log(`File (${file_name}) deleted!`);
+		});
+		const result = await db.query(
+			`DELETE FROM files WHERE file_name="${file_name}"`
+		);
+		db.query(
+			`ALTER TABLE files AUTO_INCREMENT = 1`
+		)
+	} catch (error) {
+		console.log("Error");
+	}
 }
 module.exports = {
-  getList,
-  remove,
-  playMedia,
-  removeMedia
+	getList,
+  	upload,
+	remove,
+	playMedia,
+	removeMedia
 }
