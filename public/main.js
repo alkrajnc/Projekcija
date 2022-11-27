@@ -21,7 +21,6 @@ document.body.onload = () => {
 }
 
 function uploadFile(event) {
-  console.log("Elo");
   event.preventDefault();
   const files = document.getElementById("files");
   const formData = new FormData();
@@ -35,7 +34,7 @@ function uploadFile(event) {
   });
   setTimeout(function(){
     location.href=location.href;
-  }, 1000);
+  }, 100);
   
 }
 

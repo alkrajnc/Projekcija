@@ -36,6 +36,16 @@ router.get('/', async function(req, res, next) {
     next(err);
   }
 });
+
+router.get('/logs', async function(req, res, next) {
+  try {
+    res.json(await files.logs());
+  } catch (err) {
+    console.error(`Error while fetching logs `, err.message);
+    next(err);
+  }
+});
+
  
 // * DELETE FILE FROM LIST
 router.delete('/:file_name', async function(req, res, next) {

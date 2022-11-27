@@ -1,4 +1,4 @@
 node_modules
 /server/public
 server/public/thumbnails/
-server/public/videos/
+server/public/*

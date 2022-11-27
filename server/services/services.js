@@ -13,7 +13,7 @@ var dateTime = date + ' ' + time;
 
 function playMedia(req) {
 	try {
-		fs.appendFile('log.log', `\n ${dateTime} Set active media(${req.filename}).`, function(err) {
+		fs.appendFile('../log.log', ` ${dateTime} Set active media(${req.filename}).\n`, function(err) {
 			if (err) throw err;
 			console.log('Log added');
 		});
@@ -25,7 +25,7 @@ function playMedia(req) {
 			`update files set isActiveTv${req.tv_id} = 1 where file_name = "${req.filename}"`
 		)
 	} catch (error) {
-		fs.appendFile('../log.log', `\n ${dateTime} ERROR in plating media(${error}).`, function(err) {
+		fs.appendFile('../log.log', ` ${dateTime} ERROR in plating media(${error}).\n`, function(err) {
 			if (err) throw err;
 			console.log('Log added');
 		});
@@ -41,10 +41,11 @@ function removeMedia() {
       db.query(
         `update files set isActiveTv1 = 0;`
       )
+
 	for (let index = 0; index < 2; index++) {
 		fs.unlink(`./public/display/tv${index}.mp4`, function(err) {
 		if (err) {
-			fs.appendFile('../log.log', `\n ${dateTime} ERROR in removing file(${err}).`, function(err) {
+			fs.appendFile('../log.log', ` ${dateTime} ERROR in removing file(${err}).\n`, function(err) {
 				if (err) throw err;
 				console.log('Log added');
 			});
@@ -52,19 +53,32 @@ function removeMedia() {
 		console.log(`Active media removed from /display`);
 		});
 	}
-	  
-	
-	  fs.appendFile('log.log', `\n ${dateTime} Removed active media.`, function(err) {
+	  fs.appendFile('../log.log', ` ${dateTime} Removed active media.\n`, function(err) {
 		if (err) throw err;
 		console.log('Log added');
 	});
 	} catch (error) {
-		fs.appendFile('log.log', `\n ${dateTime} ERROR in removing active media(${error}).`, function(err) {
+		fs.appendFile('../log.log', ` ${dateTime} ERROR in removing active media(${error}).\n`, function(err) {
 			if (err) throw err;
 			console.log('Log added');
 		});
 	}
 }
+async function logs() {
+	try {
+		var data = fs.readFileSync('../log.log').toString().split("\n");
+		return { 
+			data
+		}
+	} catch (error) {
+		fs.appendFile('../log.log', ` ${dateTime} ERROR in sending log file(${error}).\n`, function(err) {
+			if (err) throw err;
+			console.log('Log added');
+		});
+	}
+
+}
+
 
 async function getList() {
 	try {
@@ -75,7 +89,7 @@ async function getList() {
 			rows
 		}
 	} catch (error) {
-		fs.appendFile('../log.log', `\n ${dateTime} ERROR in quyering database(${error}).`, function(err) {
+		fs.appendFile('../log.log', ` ${dateTime} ERROR in quyering database(${error}).\n`, function(err) {
 			if (err) throw err;
 			console.log('Log added');
 		});
@@ -91,7 +105,7 @@ async function upload (req) {
 			VALUES 
 			("${req.originalname}", "${req.destination}", "${req.mimetype}", CURRENT_TIMESTAMP())`
     	);
-		fs.appendFile('../log.log', `\n ${dateTime} Uploaded file(${req.originalname}).`, function(err) {
+		fs.appendFile('../log.log', ` ${dateTime} Uploaded file(${req.originalname}).\n`, function(err) {
 			if (err) throw err;
 			console.log('Log added');
 		});
@@ -108,12 +122,16 @@ async function remove(file_name) {
 	try {
 		fs.unlink(`./public/videos/${file_name}`, function(err) {
 			if (err) {
-				fs.appendFile('../log.log', `\n ${dateTime} ERROR in removing file(${err}).`, function(err) {
+				fs.appendFile('../log.log', ` ${dateTime} ERROR in removing file(${err}).\n`, function(err) {
 					if (err) throw err;
 					console.log('Log added');
 				});
 			} 
 			console.log(`File (${file_name}) deleted!`);
+		});
+		fs.appendFile('../log.log', ` ${dateTime} Removed file from server(${file_name}).\n`, function(err) {
+			if (err) throw err;
+			console.log('Log added');
 		});
 		const result = await db.query(
 			`DELETE FROM files WHERE file_name="${file_name}"`
@@ -130,5 +148,6 @@ module.exports = {
   	upload,
 	remove,
 	playMedia,
-	removeMedia
+	removeMedia,
+	logs
 }

@@ -1,66 +1,7 @@
-
- 2022-11-26 10:6:9 Removing playing media(all).
- 2022-11-26 10:6:9 Removing playing media(all).
- 2022-11-26 10:6:9 Removing playing media(all).
- 2022-11-26 10:6:9 Removing playing media(all).
- 2022-11-26 10:6:9 Removing playing media(image.png).
- 2022-11-26 10:6:9 Removing playing media(image.png).
- 2022-11-26 10:6:9 Removing playing media(image.png).
- 2022-11-26 10:12:59 Removing playing media(image.png).
- 2022-11-26 10:12:59 Removing playing media(image.png).
- 2022-11-26 10:12:59 Removing playing media(image.png).
- 2022-11-26 10:12:59 Removing playing media(image.png).
- 2022-11-26 10:12:59 Removing playing media(image.png).
- 2022-11-26 10:12:59 Removing playing media(all).
- 2022-11-26 10:12:59 Removing playing media(all).
- 2022-11-26 10:12:59 Removing playing media(all).
- 2022-11-26 10:12:59 Removing playing media(all).
- 2022-11-26 11:22:58 Removing playing media(all).
- 2022-11-26 11:22:58 Removing playing media(all).
- 2022-11-26 11:22:58 Removing playing media(all).
- 2022-11-26 11:22:58 Removing playing media(all).
- 2022-11-26 11:22:58 Removing playing media(all).
- 2022-11-26 11:22:58 Removing playing media(all).
- 2022-11-26 11:22:58 Removing playing media(slovenc.mp4).
- 2022-11-26 11:22:58 Removing playing media(3p2y5cf2q9u81.mp4).
- 2022-11-26 11:22:58 Removing playing media(3p2y5cf2q9u81.mp4).
- 2022-11-26 11:22:58 Removing playing media(slovenc.mp4).
- 2022-11-26 11:22:58 Removing playing media(all).
- 2022-11-26 11:22:58 Removing playing media(all).
- 2022-11-26 11:22:58 Removing playing media(all).
- 2022-11-26 11:22:58 Removing playing media(all).
- 2022-11-26 11:22:58 Removing playing media(3p2y5cf2q9u81.mp4).
- 2022-11-26 11:22:58 Removing playing media(slovenc.mp4).
- 2022-11-26 12:20:56 Removing playing media(3p2y5cf2q9u81.mp4).
- 2022-11-26 12:20:56 Removing playing media(slovenc.mp4).
- 2022-11-26 12:20:56 Removing playing media(all).
- 2022-11-26 12:20:56 Removing playing media(all).
- 2022-11-26 12:20:56 Removing playing media(all).
- 2022-11-26 12:20:56 Removing playing media(all).
- 2022-11-26 16:50:06 ERROR in removing file(Error: ENOENT: no such file or directory, unlink 'C:\Users\jimmy\Documents\Projekcija\server\public\videos\undefined').
- 2022-11-26 17:48:36 Uploaded file(stock photo.jpg).
- 2022-11-26 18:0:44 ERROR in quyering database(Error: Too many connections).
- 2022-11-26 18:0:44 ERROR in quyering database(Error: Too many connections).
- 2022-11-26 18:0:44 ERROR in quyering database(Error: Too many connections).
- 2022-11-26 18:0:44 ERROR in quyering database(Error: Too many connections).
- 2022-11-26 18:0:44 ERROR in quyering database(Error: Too many connections).
- 2022-11-26 18:0:44 ERROR in quyering database(Error: Too many connections).
- 2022-11-26 18:0:44 ERROR in quyering database(Error: Too many connections).
- 2022-11-26 20:4:29 Uploaded file(carbon.png).
- 2022-11-26 20:4:29 ERROR in removing file(Error: ENOENT: no such file or directory, unlink 'C:\Users\jimmy\Documents\Projekcija\server\public\videos\carbon.png').
- 2022-11-26 20:4:29 Uploaded file(slovenc.mp4).
- 2022-11-26 20:4:29 ERROR in removing file(Error: ENOENT: no such file or directory, unlink 'C:\Users\jimmy\Documents\Projekcija\server\public\videos\slovenc.mp4').
- 2022-11-26 20:4:29 Uploaded file(redditsave.com_fr-0k1rxtnnimz91.mp4).
- 2022-11-26 20:4:29 ERROR in removing file(Error: ENOENT: no such file or directory, unlink 'C:\Users\jimmy\Documents\Projekcija\server\public\videos\redditsave.com_fr-0k1rxtnnimz91.mp4').
- 2022-11-26 20:17:47 Uploaded file(carbon.png).
- 2022-11-26 20:17:47 Uploaded file(carbon.png).
- 2022-11-26 20:17:47 ERROR in removing file(Error: ENOENT: no such file or directory, unlink 'C:\Users\jimmy\Documents\Projekcija\server\public\videos\carbon.png').
- 2022-11-26 20:27:43 Uploaded file(stock photo.jpg).
- 2022-11-26 20:37:55 ERROR in removing file(Error: ENOENT: no such file or directory, unlink 'C:\Users\jimmy\Documents\Projekcija\server\public\videos\stock photo.jpg').
- 2022-11-26 20:37:55 Uploaded file(carbon.png).
- 2022-11-26 20:41:21 Uploaded file(carbon.png).
- 2022-11-26 20:41:21 Uploaded file(redditsave.com_fr-0k1rxtnnimz91.mp4).
- 2022-11-26 20:41:21 Uploaded file(image.png).
- 2022-11-26 21:16:2 Uploaded file(slovenc.mp4).
- 2022-11-26 21:17:56 ERROR in removing file(Error: ENOENT: no such file or directory, unlink 'C:\Users\jimmy\Documents\Projekcija\server\public\display\tv0').
- 2022-11-26 21:17:56 ERROR in removing file(Error: ENOENT: no such file or directory, unlink 'C:\Users\jimmy\Documents\Projekcija\server\public\display\tv1').
+ 2022-11-27 11:44:39 Removed file from server(3p2y5cf2q9u81.mp4).
+ 2022-11-27 11:49:19 Uploaded file(3p2y5cf2q9u81.mp4).
+ 2022-11-27 11:49:19 Uploaded file(redditsave.com_fr-0k1rxtnnimz91.mp4).
+ 2022-11-27 11:49:19 Removed active media.
+ 2022-11-27 11:50:46 Removed active media.
+ 2022-11-27 11:50:46 Set active media(redditsave.com_fr-0k1rxtnnimz91.mp4).
+ 2022-11-27 11:50:46 Set active media(martinovanje.mp4).
