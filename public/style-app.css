@@ -19,9 +19,8 @@ h1{
 }
 .wrapper{
     display: grid;
-    align-items: center;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 50px 400px 400px 400px;
+    grid-template-rows: 50px 60px 40vh 40vh;
     gap: 0.7rem;
     margin: 1rem;
 }
@@ -38,11 +37,12 @@ h1{
 .tel1{
     display:grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 50px 1fr;
 }
 .tel2{
     display:grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 50px 1fr;
 }
 .nav-bar a{
     padding: 0.2rem;
@@ -118,6 +118,9 @@ i{
     color: red;
     transform: scale(1.1);
 }
+.useFile{
+    
+}
 .popup {
     display: none;
     position: absolute;
@@ -130,4 +133,13 @@ i{
     display: flex;
     flex-direction: column;
 }
-
+.useFile { 
+    transition: all 200ms ease;
+    color: rgba(255, 255, 255, 0.526);
+}
+.removeActiveMediaButtons{
+    transition: 200ms all ease;
+}
+.activeFile{
+    word-break: break-all;
+}

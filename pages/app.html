@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="../public/fontawesome-free-6.2.1-web/css/all.css">
-    <link rel="stylesheet" href="../node_modules/fontawesome-free/css/brands.css">
-    <link rel="stylesheet" href="../node_modules/fontawesome-free/css/solid.css">
     <link rel="stylesheet" href="../public/output-app.css">
     <link rel="shortcut icon" href="../public/favicon.ico" type="image/x-icon">
 </head>
@@ -16,65 +14,56 @@
         <div class="nav-bar row-span-3">
             <h2 class="text-2xl py-2 m-4">Navigacija</h2>
             <div class="navigation p-2 m-2 flex flex-col justify-between">
-                <a href="./index.html">Overview</a>
+                <a href="../index.html">Overview</a>
                 <a href="./app.html">Predvajanje</a>
-                <a href="">Link3</a>
-                <a href="">Link4</a>
+                <a href="./log.html">Logs</a>
             </div>
         </div>
         <div class="wrapper">
             <div class="col-span-3">
                 <h1 class="text-4xl ">Projekcija</h1>
             </div>
+            <div class="buttonWrapper col-span-3 flex justify-center">
+                <button class="removeMediaButton bg-red-500 rounded-xl m-2 hover:bg-red-700 hover:rounded-full px-2 text-xl transition-all ease-in duration-350">
+                    Remove media
+                </button>
+            </div>
             <div class="tel1 col-span-3 grid">
                 <h1 class="text-4xl col-span-2">Televizija 1:</h1>
                 <div class="m-2 flex flex-col">
-                        <h2 class="text-2xl m-2">Currently playing: <i id="activeFile"></i></h2>
-                        <img src="http://localhost:3000/thumbnails/img1.png" class="aspect-1 mx-auto" width="500px" alt="">
+                        <h2 class="text-2xl m-2">Currently playing: <i class="activeFile text-lg"></i></h2>
+                        <img src="" class="aspect-1 mx-auto" width="500px" alt="">
                 </div>
-                <div class="mediaSelect">
-                    <div class="headers flex flex-row justify-between mx-6 my-2 pb-2 border-b-2 border-gray-600">
+                <div class="mediaSelect p-2 overflow-auto">
+                    <div class="headers flex flex-row justify-between mx-2 my-2 pb-2 border-b-2 border-gray-600">
                         <h3>Use File</h3>
                         <h3>File name</h3>
                         <h3>File type</h3>
-                        <h3>Delete file</h3>
                     </div>
                     <div class="fileList">
                     </div>
                 </div>
             </div>
             <div class="tel2 col-span-3">
-                <h1 class="text-4xl col-span-2"">Televizija 2:</h1>
+                <h1 class="text-4xl col-span-2">Televizija 2:</h1>
                 <div class="m-2 flex flex-col">
-                        <h2 class="text-2xl m-2">Currently playing: <i id="activeFile"></i></h2>
-                        <img src="http://localhost:3000/thumbnails/img1.png" class="aspect-1 mx-auto" width="500px" alt="">
+                        <h2 class="text-2xl m-2">Currently playing: <i class="activeFile text-lg"></i></h2>
+                        <img src="http://localhost:3000/images/videos/image.png" class="aspect-1 mx-auto" width="500px" alt="">
                 </div>
-                <div class="mediaSelect">
-                    <div class="headers flex flex-row justify-between mx-6 my-2 pb-2 border-b-2 border-gray-600">
+                <div class="mediaSelect p-2 overflow-auto">
+                    <div class="headers flex flex-row justify-between mx-4 my-2 pb-2 border-b-2 border-gray-600">
                         <h3>Use File</h3>
                         <h3>File name</h3>
                         <h3>File type</h3>
-                        <h3>Delete file</h3>
                     </div>
                     <div class="fileList">
 
                     </div>
                 </div>
             </div>
-            <div class="settings"></div>
-            <div class="bottom col-span-2">
-                    <div class="headers flex flex-row justify-between mx-6 my-2 pb-2 border-b-2 border-gray-600">
-                        <h3>File name</h3>
-                        <h3>File location</h3>
-                        <h3>File type</h3>
-                        <h3>Upload time</h3>
-                        <h3>Delete file</h3>
-                    </div>
-                    <div class="fileTable">
-                    </div>
-            </div>
         </div>
     </div>
+    
     <div class="popup">
         <h1>Alert</h1>
         <p>Some stuff</p>

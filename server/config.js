@@ -4,7 +4,7 @@ const config = {
       user: "root",
       password: "admin",
       database: "file_list",
-      port: '/var/run/mysqld/mysqld.sock'
+      // port: '/var/run/mysqld/mysqld.sock'
     },
     listPerPage: 10,
   };

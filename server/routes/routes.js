@@ -6,19 +6,30 @@ const multer = require('multer');
 var fs = require('fs'); 
 const folder = './public/videos/';
 
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, './public/videos')
-  },
-  filename: function (req, file, cb) {
-    cb(null,file.originalname)
-  }
-});
-const uploadFile = multer({storage:storage})
+// * FOR TIMESTAMP IN CONFIG
+var today = new Date();
+var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+var dateTime = date+' '+time;
 
+
+// * FILE STORAGE
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/videos/')
+  },
+  filename: function (req, file, cb) { 
+    cb(null , file.originalname);   
+ }
+})
+
+const upload = multer({ storage: storage })
+
+
+
+// * GET FILE LIST
 router.get('/', async function(req, res, next) {
   try {
-    console.log("Querying file list");
     res.json(await files.getList(req.query.page));
   } catch (err) {
     console.error(`Error while getting file list `, err.message);
@@ -26,6 +37,17 @@ router.get('/', async function(req, res, next) {
   }
 });
 
+router.get('/logs', async function(req, res, next) {
+  try {
+    res.json(await files.logs());
+  } catch (err) {
+    console.error(`Error while fetching logs `, err.message);
+    next(err);
+  }
+});
+
+ 
+// * DELETE FILE FROM LIST
 router.delete('/:file_name', async function(req, res, next) {
   try {
     res.json(await files.remove(req.params.file_name));
@@ -37,40 +59,28 @@ router.delete('/:file_name', async function(req, res, next) {
 
 
 
-
-
-/* POST files */
-router.post('/upload', uploadFile.single('test'), function(req, file) {
-  console.log(req.file, req.body);
-  queryFileList();
-  upload(req);
-});
-
-/* POST files */
-router.post('/media', function(req, file) {
-  console.log(req.body)
+// * UPLOAD FILE TO SERVER
+router.post('/upload', upload.single('files'), async function(req, res) {
+  try {
+    files.upload(req.file);
+  } catch (error) {
+    console.log(error)
+  }
   
+ 
+});
+
+// * IZBIRA KATERI FILE SE BO PREDVAJAL
+router.post('/media', function(req, res, next) {
+  files.playMedia(req.body);
+});
+// * ODSTRANITEV PROJEKCIJE
+router.post('/media/remove', function(req, res, next) {
+  files.removeMedia(req.body);
 });
 
 
 
-function queryFileList () {
-  fs.readdir(folder, (err, files) => {
-    files.forEach(file => {
-      console.log(file);
-    });
-  });
-}
-
-async function upload (service) {
-  console.log("Uploading file");
-  const result = await db.query(
-      `INSERT INTO files 
-      (file_name, file_location, file_type, upload_time) 
-      VALUES 
-      ("${service.file.filename}", "${service.file.destination}", "${service.file.mimetype}", CURRENT_TIMESTAMP())`
-    );
-}
 
 module.exports = router;
 

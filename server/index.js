@@ -1,4 +1,5 @@
 const express = require("express");
+var path = require('path');
 const app = express();
 const port = 3000;
 const game = require("./routes/routes");
@@ -21,8 +22,8 @@ app.use(
   })
 );
 
-app.use(express.static('./public/')); 
-app.use('/images', express.static('images'));
+var dir = path.join(__dirname, 'public/display');
+app.use('/display', express.static(dir));
 
 app.get("/", (req, res) => {
   res.json({ message: "ok" });
@@ -39,5 +40,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`App listening at http://localhost:${port}`);
 });

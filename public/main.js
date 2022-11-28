@@ -1,22 +1,45 @@
 // const button = document.getElementById("sendButton");
 const selectCommand = document.getElementsByClassName('checkBoxSettings');
-const file = document.getElementById("fileUpload").files[0];
+// const file = document.getElementById("fileUpload").files[0];
 const fileTable = document.getElementsByClassName("fileTable")[0];
 const deleteFileIcons = document.getElementsByClassName("trash");
 const serverStatus = document.getElementsByClassName("fa-circle")[0];
-const activeFile = document.getElementById("activeFile");
 const fileName = document.getElementsByClassName("index");
+const sendFiles = document.getElementsByClassName('submit-files')[0];
+
 
 let fileList = {};
 let activeElement;
 
 
-
-document.body.onload = () => {
-  getResponse();
+sendFiles.onclick = (event) => {
+  uploadFile(event);
 }
 
-async function getResponse() {
+document.body.onload = () => {
+  fetchFiles();
+}
+
+function uploadFile(event) {
+  event.preventDefault();
+  const files = document.getElementById("files");
+  const formData = new FormData();
+  formData.append("files", files.files[0]);
+  fetch("http://localhost:3000/service/upload", {
+      method: 'POST',
+      headers: {
+      },
+      mode: 'cors',
+      body: formData,
+  });
+  setTimeout(function(){
+    location.href=location.href;
+  }, 100);
+  
+}
+
+
+async function fetchFiles() {
   const response = await fetch(
     'http://localhost:3000/service',
     {
@@ -31,25 +54,9 @@ async function getResponse() {
       }
     }
   );
-  if (!response.ok) {
-		serverStatus.style.color = "red";
-    throw new Error(`Error fetching data`);
-  } else {
-    serverStatus.style.color = "green";
-  }
   const data = await response.json();
   fileList = data;
-  for (let i = 0; i < Object.keys(fileList.rows).length; i++) {
-    if (fileList.rows[i].isActive === 1) {
-      activeElement = i;
-      activeFile.innerHTML = fileList.rows[activeElement].file_name;
-      break;
-    } else {
-      activeFile.innerHTML = '';
-    }
-    
-  }
-  
+  serverStatus.style.color = 'green';
   populateFileTable(data);
 }
 
@@ -67,7 +74,6 @@ function populateFileTable (data) {
         <div class="trash"><i class="fa-solid fa-trash"></i></div>
       </div>`;
     fileTable.appendChild(parentDiv);
-    
   }
   Array.from(deleteFileIcons).forEach((item, index) => {
     item.onclick = () => {
@@ -77,6 +83,7 @@ function populateFileTable (data) {
   });
 }
 async function deleteFileFromServer (index) {
+  
   const response = await fetch(
     `http://localhost:3000/service/${index}`,
     {
@@ -93,9 +100,8 @@ async function deleteFileFromServer (index) {
   );
   if (!response.ok) {
     throw new Error(`Error deleting`);
-  } else {
-    console.log("Okey");
   }
+  location.href=location.href;
 }
 
 

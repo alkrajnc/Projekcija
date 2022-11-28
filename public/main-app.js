@@ -1,21 +1,48 @@
-// const button = document.getElementById("sendButton");
-const selectCommand = document.getElementsByClassName('checkBoxSettings');
 const fileTable = document.getElementsByClassName("fileTable")[0];
 const deleteFileIcons = document.getElementsByClassName("trash");
-const activeFile = document.getElementById("activeFile");
+const activeFile = document.getElementsByClassName("activeFile");
 const fileName = document.getElementsByClassName("index");
 const fileListDiv = document.getElementsByClassName("fileList");
+const tvIconTv0 = document.getElementsByClassName("useFileTv0");
+const tvIconTv1 = document.getElementsByClassName("useFileTv1");
+const removeAllMediaButton = document.getElementsByClassName("removeMediaButton")[0];
 
 let fileList = {};
 let activeElement;
 
-
-
 document.body.onload = () => {
-  getResponse();
+  fetchFileList();
+  
+  
+}
+removeAllMediaButton.onclick = () => {
+  removeActiveMedia();
+  async function removeActiveMedia () {
+    const response = await fetch(
+      `http://localhost:3000/service/media/remove`,
+      {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Methods': "*",
+          'Access-Control-Allow-Origin': "*",
+          'Access-Control-Allow-Headers': "*"
+        },
+        body: `{
+          "num_of_files": ${Object.keys(fileList).length}
+        }`
+      }
+    );
+    console.log(response.json());
+  }
+  setTimeout(() => {
+    location.href=location.href;
+  }, 100);
 }
 
-async function getResponse() {
+
+async function fetchFileList() {
   const response = await fetch(
     'http://localhost:3000/service',
     {
@@ -30,25 +57,47 @@ async function getResponse() {
       }
     }
   );
-  if (!response.ok) {
-    throw new Error(`Error fetching data`);
-  }
   const data = await response.json();
   fileList = data;
-  for (let i = 0; i < Object.keys(fileList.rows).length; i++) {
-    if (fileList.rows[i].isActive === 1) {
-      activeElement = i;
-      activeFile.innerHTML = fileList.rows[activeElement].file_name;
-      break;
-    } else {
-      activeFile.innerHTML = '';
-    }
-    
-  }
-  populateFileList(data);
-  populateFileTable(data);
+  generateFileList(data);
+  currentlyPlaying(fileList);
 }
-function populateFileList (data) {
+
+async function useMedia (index, tvId) {
+  console.log(index);
+  fetch(
+    `http://localhost:3000/service/media`,
+    {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Methods': "*",
+        'Access-Control-Allow-Origin': "*",
+        'Access-Control-Allow-Headers': "*"
+      },
+      body: `{
+        "tv_id": ${tvId},
+        "filename": "${fileName[index].innerHTML}"
+      }`
+    }
+  );
+}
+
+function currentlyPlaying () {
+  for (let i = 0; i < Object.keys(fileList.rows).length; i++) {
+    if (fileList.rows[i].isActiveTv0 === 1) {
+      tempActive = i;
+      activeFile[0].innerHTML = fileList.rows[tempActive].file_name;
+    } 
+    if (fileList.rows[i].isActiveTv1 === 1) {
+      tempActive = i;
+      activeFile[1].innerHTML = fileList.rows[tempActive].file_name;
+    } 
+  }
+  
+}
+function generateFileList (data) {
     for (let index = 0; index < Object.keys(data.rows).length; index++) {
         const parentDiv = document.createElement("div");
         const parentDiv2 = document.createElement("div");  
@@ -57,77 +106,56 @@ function populateFileList (data) {
         parentDiv.innerHTML = `
         
         <div class="fileInfoDiv flex flex-row justify-between">
-          <div class="useFile"><i class="fa-solid fa-projector"></i></div>
+          <div class="useFileTv0"><i class="fa-solid fa-tv"></i></div>
           <h4 class="index">${data.rows[index].file_name}</h4>
           <h4>${data.rows[index].file_type}</h4>
-          <div class="trash"><i class="fa-solid fa-trash"></i></div>
         </div>`;
         parentDiv2.innerHTML = `
         
         <div class="fileInfoDiv flex flex-row justify-between">
-          <div class="useFile"><i class="fa-solid fa-projector"></i></div>
+          <div class="useFileTv1"><i class="fa-solid fa-tv"></i></i></div>
           <h4 class="index">${data.rows[index].file_name}</h4>
           <h4>${data.rows[index].file_type}</h4>
-          <div class="trash"><i class="fa-solid fa-trash"></i></div>
         </div>`;
       fileListDiv[0].appendChild(parentDiv);
       fileListDiv[1].appendChild(parentDiv2);
     }
-    Array.from(deleteFileIcons).forEach((item, index) => {
+    Array.from(tvIconTv0).forEach((item, index) => {
       item.onclick = () => {
-        console.log(fileName[index].innerHTML)
-        deleteFileFromServer(fileName[index].innerHTML);
+        let tvId = 0;
+        useMedia(index, tvId);
+        currentlyPlaying();
+        setTimeout(() => {
+          location.href=location.href;
+        }, 100);
       };
-    });
-  }
-
-
-
-function populateFileTable (data) {
-  for (let index = 0; index < Object.keys(data.rows).length; index++) {
-      const parentDiv = document.createElement("div"); 
-      parentDiv.classList.add("file");
-      parentDiv.innerHTML = `
-      <i class="fa-solid fa-photo-film"></i>
-      <div class="fileInfoDiv flex flex-row justify-between">
-        <h4 class="index">${data.rows[index].file_name}</h4>
-        <h4>${data.rows[index].file_location}</h4>
-        <h4>${data.rows[index].file_type}</h4>
-        <h4>${data.rows[index].upload_time}</h4>
-        <div class="trash"><i class="fa-solid fa-trash"></i></div>
-      </div>`;
-    fileTable.appendChild(parentDiv);
-    
-  }
-  Array.from(deleteFileIcons).forEach((item, index) => {
-    item.onclick = () => {
-      console.log(fileName[index].innerHTML)
-      deleteFileFromServer(fileName[index].innerHTML);
-    };
-  });
-}
-async function deleteFileFromServer (index) {
-  const response = await fetch(
-    `http://localhost:3000/service/${index}`,
-    {
-      method: 'DELETE',
-      mode: 'cors',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Methods': "*",
-        'Access-Control-Allow-Origin': "*",
-        'Access-Control-Allow-Headers': "*"
+      item.onmouseover = () => {
+        item.style.color = 'aqua';
+        item.style.transform = 'scale(1.1)';
       }
-    }
-  );
-  if (!response.ok) {
-    throw new Error(`Error deleting`);
-  } else {
-    console.log("Okey");
-  }
+      item.onmouseout = () => {
+        item.style.color = 'white';
+        item.style.transform = 'scale(1)';
+      }
+    });
+    Array.from(tvIconTv1, (item, index) => {
+        item.onclick = () => {
+          let tvId = 1;
+          useMedia(index, tvId);
+          currentlyPlaying();
+          setTimeout(() => {
+            location.href=location.href;
+          }, 100);
+        }
+        item.onmouseover = () => {
+          item.style.color = 'aqua';
+          item.style.transform = 'scale(1.1)';
+        }
+        item.onmouseout = () => {
+          item.style.color = 'white';
+          item.style.transform = 'scale(1)';
+        }
+    });
 }
-
-
 
 
