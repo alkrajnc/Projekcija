@@ -11,7 +11,7 @@
             "name": "files",
             "database": "file_list",
             "username": "root",
-            "password": "admin"
+            "password": ""
         }
     ]
 }
