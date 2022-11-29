@@ -4,7 +4,7 @@ const config = require('../config');
 const { exec } = require("child_process");
 var fs = require('fs');
 const folder = './public/videos/';
-
+const fetch = require('node-fetch');
 
 var today = new Date();
 var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -21,20 +21,19 @@ function playMedia(req) {
 			if (err) throw err;	
 			console.log(`Copied ${req.filename} to tv${req.tv_id}`);
 		  });
+				
+		fetch('http://194.249.235.20:5000/client/start', {
+			method: 'POST',
+			body: `{
+				"tv_id": "${req.rv_id}"
+			}`,
+			headers: { 'Content-Type': 'application/json' }
+		}).then(res => res.json())
+			.then(json => console.log(json))
+			.catch(err => console.log(err));
 		db.query(
 			`update files set isActiveTv${req.tv_id} = 1 where file_name = "${req.filename}"`
 		)
-		exec("pm2 start show", (error, stdout, stderr) => {
-			if (error) {
-				console.log(`error: ${error.message}`);
-				return;
-			}
-			if (stderr) {
-				console.log(`stderr: ${stderr}`);
-				return;
-			}
-			console.log(`stdout: ${stdout}`);
-		});
 	} catch (error) {
 		fs.appendFile('../log.log', ` ${dateTime} ERROR in plating media(${error}).\n`, function(err) {
 			if (err) throw err;
@@ -63,6 +62,15 @@ function removeMedia() {
 		} 
 		console.log(`Active media removed from /display`);
 		});
+		fetch('http://194.249.235.20:5000/client/stop', {
+			method: 'POST',
+			body: `{
+				"tv_id": "${index}"
+			}`,
+			headers: { 'Content-Type': 'application/json' }
+		}).then(res => res.json())
+			.then(json => console.log(json))
+			.catch(err => console.log(err));
 	}
 	  fs.appendFile('../log.log', ` ${dateTime} Removed active media.\n`, function(err) {
 		if (err) throw err;

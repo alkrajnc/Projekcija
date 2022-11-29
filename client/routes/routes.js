@@ -1,5 +1,4 @@
 const express = require('express');
-const db = require('../services/db');
 const router = express.Router();
 const service = require('../services/services');
 const { exec } = require("child_process");
@@ -14,8 +13,23 @@ var dateTime = date+' '+time;
 
 
 // * IZBIRA KATERI FILE SE BO PREDVAJAL
-router.post('/', function(req, res, next) {
-  service.startDisplay(req.body);
+router.post('/start', function(req, res, next) {
+  try {
+    console.log('start display');
+    res.json(service.startDisplay(req.body))
+    
+  } catch (error) {
+    console.error('Error(service.startDisplay): ' + error)
+  }
+  
+});
+router.post('/stop', function(req, res, next) {
+  try {
+    service.stopDisplay(req.body);
+  } catch (error) {
+    console.error('Error(service.stopDisplay): ' + error)
+  }
+  
 });
 
 

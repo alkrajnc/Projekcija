@@ -48,3 +48,45 @@
  2022-11-28 13:21:27 Removed active media.
  2022-11-28 13:21:27 ERROR in removing file(Error: ENOENT: no such file or directory, unlink './public/display/tv1.mp4').
  2022-11-28 13:21:27 Set active media(POKLICI_SLIKE(1).mp4).
+ 2022-11-29 8:41:0 Removed active media.
+ 2022-11-29 8:41:0 ERROR in removing file(Error: ENOENT: no such file or directory, unlink './public/display/tv1.mp4').
+ 2022-11-29 8:41:0 Set active media(Video_1.mp4).
+ 2022-11-29 8:41:0 Removed active media.
+ 2022-11-29 8:41:0 ERROR in removing file(Error: ENOENT: no such file or directory, unlink './public/display/tv1.mp4').
+ 2022-11-29 8:41:0 Set active media(POKLICI_SLIKE(1).mp4).
+ 2022-11-29 8:41:0 Removed active media.
+ 2022-11-29 8:41:0 ERROR in removing file(Error: ENOENT: no such file or directory, unlink './public/display/tv1.mp4').
+ 2022-11-29 9:30:9 Removed active media.
+ 2022-11-29 9:30:9 ERROR in removing file(Error: ENOENT: no such file or directory, unlink './public/display/tv0.mp4').
+ 2022-11-29 9:30:9 ERROR in removing file(Error: ENOENT: no such file or directory, unlink './public/display/tv1.mp4').
+ 2022-11-29 9:30:9 Set active media(POKLICI_SLIKE(1).mp4).
+ 2022-11-29 9:30:9 ERROR in plating media(ReferenceError: fetch is not defined).
+ 2022-11-29 9:36:39 Set active media(POKLICI_SLIKE(1).mp4).
+ 2022-11-29 9:37:47 Removed active media.
+ 2022-11-29 9:37:47 ERROR in removing file(Error: ENOENT: no such file or directory, unlink './public/display/tv1.mp4').
+ 2022-11-29 9:37:47 Set active media(POKLICI_SLIKE(1).mp4).
+ 2022-11-29 9:37:47 Removed active media.
+ 2022-11-29 9:37:47 ERROR in removing file(Error: ENOENT: no such file or directory, unlink './public/display/tv1.mp4').
+ 2022-11-29 9:37:47 Set active media(POKLICI_SLIKE(1).mp4).
+ 2022-11-29 9:37:47 Removed active media.
+ 2022-11-29 9:37:47 ERROR in removing file(Error: ENOENT: no such file or directory, unlink './public/display/tv1.mp4').
+ 2022-11-29 9:37:47 Set active media(POKLICI_SLIKE(1).mp4).
+ 2022-11-29 9:37:47 Removed active media.
+ 2022-11-29 9:37:47 ERROR in removing file(Error: ENOENT: no such file or directory, unlink './public/display/tv1.mp4').
+ 2022-11-29 9:37:47 Set active media(POKLICI_SLIKE(1).mp4).
+ 2022-11-29 9:37:47 Removed active media.
+ 2022-11-29 9:37:47 ERROR in removing file(Error: ENOENT: no such file or directory, unlink './public/display/tv1.mp4').
+ 2022-11-29 9:37:47 Set active media(POKLICI_SLIKE(1).mp4).
+ 2022-11-29 9:37:47 Removed active media.
+ 2022-11-29 9:37:47 ERROR in removing file(Error: ENOENT: no such file or directory, unlink './public/display/tv1.mp4').
+ 2022-11-29 9:37:47 Set active media(POKLICI_SLIKE(1).mp4).
+ 2022-11-29 9:37:47 Removed active media.
+ 2022-11-29 9:37:47 ERROR in removing file(Error: ENOENT: no such file or directory, unlink './public/display/tv1.mp4').
+ 2022-11-29 9:37:47 Set active media(POKLICI_SLIKE(1).mp4).
+ 2022-11-29 9:37:47 Removed active media.
+ 2022-11-29 9:37:47 ERROR in removing file(Error: ENOENT: no such file or directory, unlink './public/display/tv1.mp4').
+ 2022-11-29 9:37:47 Set active media(POKLICI_SLIKE(1).mp4).
+ 2022-11-29 9:37:47 Removed active media.
+ 2022-11-29 9:37:47 ERROR in removing file(Error: ENOENT: no such file or directory, unlink './public/display/tv1.mp4').
+ 2022-11-29 9:51:4 Set active media(POKLICI_SLIKE(1).mp4).
+ 2022-11-29 9:51:4 Set active media(POKLICI_SLIKE(1).mp4).
