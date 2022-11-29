@@ -2,7 +2,7 @@ const config = {
     db: {
       host: "localhost",
       user: "root",
-      password: "",
+      password: "admin",
       database: "file_list",
       // port: '/var/run/mysqld/mysqld.sock'
     },

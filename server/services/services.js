@@ -24,6 +24,17 @@ function playMedia(req) {
 		db.query(
 			`update files set isActiveTv${req.tv_id} = 1 where file_name = "${req.filename}"`
 		)
+		exec("pm2 start show", (error, stdout, stderr) => {
+			if (error) {
+				console.log(`error: ${error.message}`);
+				return;
+			}
+			if (stderr) {
+				console.log(`stderr: ${stderr}`);
+				return;
+			}
+			console.log(`stdout: ${stdout}`);
+		});
 	} catch (error) {
 		fs.appendFile('../log.log', ` ${dateTime} ERROR in plating media(${error}).\n`, function(err) {
 			if (err) throw err;

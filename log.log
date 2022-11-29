@@ -35,3 +35,16 @@
  2022-11-27 11:50:46 Removed active media.
  2022-11-27 11:50:46 Set active media(redditsave.com_fr-0k1rxtnnimz91.mp4).
  2022-11-27 11:50:46 Set active media(martinovanje.mp4).
+ 2022-11-28 13:11:8 ERROR in quyering database(Error: Access denied for user 'root'@'localhost').
+ 2022-11-28 13:11:8 ERROR in quyering database(Error: Access denied for user 'root'@'localhost').
+ 2022-11-28 13:11:50 Removed active media.
+ 2022-11-28 13:11:50 Set active media(Video_1.mp4).
+ 2022-11-28 13:11:50 Removed active media.
+ 2022-11-28 13:11:50 ERROR in removing file(Error: ENOENT: no such file or directory, unlink './public/display/tv1.mp4').
+ 2022-11-28 13:14:6 Set active media(Video_1.mp4).
+ 2022-11-28 13:21:27 Removed active media.
+ 2022-11-28 13:21:27 ERROR in removing file(Error: ENOENT: no such file or directory, unlink './public/display/tv1.mp4').
+ 2022-11-28 13:21:27 Set active media(Video_1.mp4).
+ 2022-11-28 13:21:27 Removed active media.
+ 2022-11-28 13:21:27 ERROR in removing file(Error: ENOENT: no such file or directory, unlink './public/display/tv1.mp4').
+ 2022-11-28 13:21:27 Set active media(POKLICI_SLIKE(1).mp4).
