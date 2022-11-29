@@ -16,7 +16,8 @@ var dateTime = date+' '+time;
 router.post('/start', function(req, res, next) {
   try {
     console.log('start display');
-    res.json(service.startDisplay(req.body))
+    console.log(req.body.tv_id);
+    //res.json(service.startDisplay(req.body))
     
   } catch (error) {
     console.error('Error(service.startDisplay): ' + error)

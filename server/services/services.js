@@ -25,7 +25,7 @@ function playMedia(req) {
 		fetch('http://194.249.235.20:5000/client/start', {
 			method: 'POST',
 			body: `{
-				"tv_id": "${req.rv_id}"
+				"tv_id": ${req.tv_id}
 			}`,
 			headers: { 'Content-Type': 'application/json' }
 		}).then(res => res.json())
