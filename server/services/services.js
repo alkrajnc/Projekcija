@@ -21,7 +21,19 @@ function playMedia(req) {
 			if (err) throw err;	
 			console.log(`Copied ${req.filename} to tv${req.tv_id}`);
 		  });
-				
+		// * Shrani prvi frame videa ki se potem uporabi kot thumbnail
+		  exec(`ffmpeg -i ./public/display/tv${req.tv_id}.mp4 -vf "select=eq(n\,0)" -vf scale=320:-2 -q:v 3 ./public/thumbnails/tv${req.tv_id}.jpg`, (error, stdout, stderr) => {
+			if (error) {
+			  console.log(`error: ${error.message}`);
+			  return;
+			}
+			if (stderr) {
+			  console.log(`stderr: ${stderr}`);
+			  return;
+			}
+			console.log(`stdout: ${stdout}`);
+		  });  
+		  
 		fetch('http://194.249.235.20:5000/client/start', {
 			method: 'POST',
 			body: `{

@@ -124,13 +124,14 @@ i{
     word-break:keep-all;
 }
 .navigation > a{
-    border: #adbac788 1px solid;
-    box-shadow: inset 0 0 5px 0 #adbac788;
-    padding: 0.5rem;
-    border-radius: 1rem;
+    border-bottom: #00ffbf88 0.25rem solid;
+    padding: 0.7rem;
+    border-radius: 0.24rem;
     transition: all 200ms ease;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.2rem;
+    background-color: #373e475e;
+    text-align: center;
 }
 .navigation > a:hover{
-    box-shadow: 0 0 5px 0 #adbac788;
+    border-bottom: #00fff2 0.25rem solid;
 }

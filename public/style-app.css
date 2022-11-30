@@ -143,3 +143,15 @@ i{
 .activeFile{
     word-break: break-all;
 }
+.navigation > a{
+    border-bottom: #00ffbf88 0.25rem solid;
+    padding: 0.7rem;
+    border-radius: 0.24rem;
+    transition: all 200ms ease;
+    margin-bottom: 1.2rem;
+    background-color: #373e475e;
+    text-align: center;
+}
+.navigation > a:hover{
+    border-bottom: #00fff2 0.25rem solid;
+}

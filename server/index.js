@@ -25,6 +25,9 @@ app.use(
 var dir = path.join(__dirname, 'public/display');
 app.use('/display', express.static(dir));
 
+var dir_img = path.join(__dirname, 'public/thumbnails');
+app.use('/img', express.static(dir));
+
 app.get("/", (req, res) => {
   res.json({ message: "ok" });
 });

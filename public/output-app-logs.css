@@ -727,6 +727,20 @@ h1{
   padding: 5px;
 }
 
+.navigation > a{
+  border-bottom: #00ffbf88 0.25rem solid;
+  padding: 0.7rem;
+  border-radius: 0.24rem;
+  transition: all 200ms ease;
+  margin-bottom: 1.2rem;
+  background-color: #373e475e;
+  text-align: center;
+}
+
+.navigation > a:hover{
+  border-bottom: #00fff2 0.25rem solid;
+}
+
 .hover\:rounded-3xl:hover {
   border-radius: 1.5rem;
 }
