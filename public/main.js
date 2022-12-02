@@ -10,7 +10,7 @@ const sendFiles = document.getElementsByClassName('submit-files')[0];
 
 let fileList = {};
 let activeElement;
-
+serverStatus.style.color = 'red';
 
 sendFiles.onclick = (event) => {
   uploadFile(event);
