@@ -184,3 +184,63 @@
  2022-11-29 11:8:42 Set active media(Video_1.mp4).
  2022-11-29 11:8:42 Removed active media.
  2022-11-29 11:8:42 ERROR in removing file(Error: ENOENT: no such file or directory, unlink './public/display/tv0.mp4').
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:13:17 ERROR in quyering database(Error: connect ECONNREFUSED 127.0.0.1:3306).
+ 2023-7-18 14:15:41 ERROR in quyering database(Error: Access denied for user 'root'@'localhost' (using password: YES)).
+ 2023-7-18 14:15:41 ERROR in quyering database(Error: Access denied for user 'root'@'localhost' (using password: YES)).
+ 2023-7-18 14:15:41 ERROR in quyering database(Error: Access denied for user 'root'@'localhost' (using password: YES)).
+ 2023-7-18 14:15:41 ERROR in quyering database(Error: Access denied for user 'root'@'localhost' (using password: YES)).
+ 2023-7-18 14:15:41 ERROR in quyering database(Error: Access denied for user 'root'@'localhost' (using password: YES)).
+ 2023-7-18 14:15:41 ERROR in quyering database(Error: Access denied for user 'root'@'localhost' (using password: YES)).
+ 2023-7-18 14:15:41 ERROR in quyering database(Error: Access denied for user 'root'@'localhost' (using password: YES)).
+ 2023-7-18 14:15:41 ERROR in quyering database(Error: Access denied for user 'root'@'localhost' (using password: YES)).
+ 2023-7-18 14:15:41 ERROR in quyering database(Error: Access denied for user 'root'@'localhost' (using password: YES)).
+ 2023-7-18 14:15:41 ERROR in quyering database(Error: Access denied for user 'root'@'localhost' (using password: YES)).
+ 2023-7-18 14:15:41 ERROR in quyering database(Error: Access denied for user 'root'@'localhost' (using password: YES)).
+ 2023-7-18 14:15:41 ERROR in quyering database(Error: Access denied for user 'root'@'localhost' (using password: YES)).
+ 2023-7-18 14:16:8 ERROR in quyering database(Error: Unknown column 'isActiveTv0' in 'field list').
+ 2023-7-18 14:16:8 ERROR in quyering database(Error: Unknown column 'isActiveTv0' in 'field list').
+ 2023-7-18 14:16:8 ERROR in quyering database(Error: Unknown column 'isActiveTv0' in 'field list').
+ 2023-7-18 14:16:8 ERROR in quyering database(Error: Unknown column 'isActiveTv0' in 'field list').
+ 2023-7-18 14:16:8 ERROR in quyering database(Error: Unknown column 'isActiveTv0' in 'field list').
+ 2023-7-18 14:16:8 ERROR in quyering database(Error: Unknown column 'isActiveTv0' in 'field list').
+ 2023-7-18 14:16:8 ERROR in quyering database(Error: Unknown column 'isActiveTv0' in 'field list').
+ 2023-7-18 14:16:8 ERROR in quyering database(Error: Unknown column 'isActiveTv0' in 'field list').
+ 2023-7-18 14:16:8 ERROR in quyering database(Error: Unknown column 'isActiveTv0' in 'field list').
+ 2023-7-18 14:16:8 ERROR in quyering database(Error: Unknown column 'isActiveTv0' in 'field list').
+ 2023-7-18 14:16:8 ERROR in quyering database(Error: Unknown column 'isActiveTv0' in 'field list').
+ 2023-7-18 14:16:8 ERROR in quyering database(Error: Unknown column 'isActiveTv0' in 'field list').
+ 2023-7-18 14:16:8 ERROR in quyering database(Error: Unknown column 'isActiveTv0' in 'field list').
+ 2023-7-18 14:16:43 Uploaded file(rapidsave.com_wordington_cosplay-talp6vaq753b1.mp4).
+ 2023-7-18 14:16:43 Uploaded file(rapidsave.com__-bjqk73htqk5b1.mp4).
+ 2023-7-18 14:16:43 Set active media(rapidsave.com_wordington_cosplay-talp6vaq753b1.mp4).
