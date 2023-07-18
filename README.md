@@ -79,12 +79,11 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+This is a guide to setup the app localy
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+Firstly you need Node and npm.
 * npm
   ```
   npm install npm@latest -g
@@ -92,7 +91,7 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-_Example on installing and setting up the app._
+_Installation instructions_
 
 1. Clone the repo
    ```sh
